@@ -14,10 +14,6 @@ $no_of_pages = $no_of_images/$images_per_page;
 if($no_of_pages!=(int)$no_of_pages){
     $no_of_pages=(int)$no_of_pages+1;
 }
-/*//rounding test
-$double = 1.75;
-echo (int)$double;
-*/
 
 ?>
 
@@ -50,14 +46,7 @@ echo (int)$double;
         </form>
         <br>
         <!--pagination links-->
-        <!--<a href="?page=1&item=<?php /*echo $item;*/?>">1</a>
-        <?php /*if($page>=2):*/?>
-        <a href="?page=<?php /*echo $page -1;*/?>&item=<?php /*echo $item;*/?>">prev</a>
-        <?php /*endif;*/?>
-        <?php /*if($page<$no_of_pages):*/?>
-        <a href="?page=<?php /*echo $page + 1;*/?>&item=<?php /*echo $item;*/?>">next</a>
-        <?php /*endif;*/?>
-        <a href="?page=<?php /*echo $no_of_pages;*/?>&item=<?php /*echo $item;*/?>"><?php /*echo $no_of_pages;*/?></a>-->
+
         <div class="pagination">
             <!--previous page-->
             <?php if($page>=2):?>

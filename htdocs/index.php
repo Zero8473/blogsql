@@ -1,11 +1,6 @@
 <?php
 require_once "functions.php";
-//$res = $conn->query($select);
-//$articles= $res->fetch_assoc(); // das hier holt immer nur die nächste zeile
-//$articles=sortDesc($articles); // < sortieren in der DB !!
-//while ($article = $res->fetch_assoc()) { // wenn kein Artikel (mehr) da ist zum holen ist der ausdruck == false
-//    var_dump($article); // das sollte jetzt die einzlene zeile haben, und alle bis zum schluss ausgeben
-//}
+
 
 //database connection
 $conn= null;
@@ -45,7 +40,7 @@ echo "<a href='categories.php'>Go to categories</a>";
             <div class="left column">
                 <!--iterates over array and creates the article cards-->
                 <?php
-                //if(is_resource($articles)):
+
                 if ($articles):
                 ?>
                     <?php
@@ -63,7 +58,7 @@ echo "<a href='categories.php'>Go to categories</a>";
                         <a href="delete.php?item=<?php echo $item['id']?>" class="delete">Delete</a>
                         <a href="edit.php?item=<?php echo $item['id']?>" class="edit">Edit</a>
                     <?php
-                    //endforeach;
+
                     endwhile;
                     ?>
                     <br>

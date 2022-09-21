@@ -1,6 +1,6 @@
 <?php
 require_once 'functions.php';
-/*$articles=getData();*/
+
 $articleID=$_GET['item'];//article ID
 $selected = $_POST["checkbox"];//selected categories
 //database connection
@@ -9,24 +9,7 @@ require_once "dbconn.php";
 //get element to edit for image in case user doesn't change image
 $article = getArticle($conn, $articleID);//get article to edit from database
 
-/*
- *
- *
- *
- 1.) alle blog_categories löschen wo blog_id = $articleID
- 2.) insert alles aus $articleCats in blog_categories mit $value und $articleID
- *
- *
-blog_id     categeory_1
-1           1
-1           2
-1           5
-2           1
-2           5
- *
 
-unique key (blog_id,category_id)
- */
 deleteArticleCats($conn, $articleID);//delete the old categories assigned to the article
 
 setCategories($conn, $selected, $articleID);//set the article's categories

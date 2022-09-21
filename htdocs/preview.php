@@ -8,11 +8,6 @@ $image_dir=$_SERVER['DOCUMENT_ROOT']."/images/";
 $image = basename($_GET['image']);
 
 
-// 1. muss ich ein thumbnail generieren (w || h > 300) ?
-// 2. wenn ja existiert ein thumbnail?
-// 3. ist das bild neuer als das thumbnail?
-// 4. wenn 2 == nein oder 3 == ja dann thumbnail generieren
-// 5. das passende bild zurückgeben
 
 //default directory
 $readfromdirectory = 'images';
@@ -68,9 +63,7 @@ $imagetype = exif_imagetype($image_dir.basename($image));
             }
             $imagetype = 2; // force to be jpeg
 
-            //var_dump([$preview,$source]);
-            //print_r([$ratio,$new_width,$new_height,$width_orig, $height_orig,$image_dir,$image]);
-            //echo date('H:i:s').':'.__FILE__.':'.__LINE__;exit;
+
 
             //output thumbnail to brower and save it to $cache_dir.$filenametoread (which also names the file)
             imagejpeg($preview, $cache_dir.$filenametoread, 100);
@@ -89,26 +82,7 @@ $imagetype = exif_imagetype($image_dir.basename($image));
         //output image or thumbnail depending on whether directory or filename was reassigned
         readfile($_SERVER['DOCUMENT_ROOT']."/".$readfromdirectory.'/'.$filenametoread);
 
-// filemtime
-// Wenn thumbnail exisitert & original neuer ist > neu generieren
-// ideen cache filename
-// - originial.jpg > thumb_original.jpg
-// - originial.jpg > thumb_rahmen_shadow_text_tgtwidth_original.jpg
-// - sha1('original.jpg'.$tgtwidth) > rtfguybhjnhgdf > rtfguybhjnhgdf.jpg
-// readfile($thumbfile);->opens file and immediately outputs it. You can't make further changes
-// png support
 
-/*
- *
- *
- * 1. Key - alles sammeln was diesen cache ausmacht. Hier im beispiel: quelldatei, zielhöhe , zielbreite
- * 2. Feststellen ob es diesen Key gibt. Hier im beispiel: key + .jpg als datei im ordner thumbnails
- * 3. Feststellen ob Cache noch gültig ist Hier im beispiel: orginaldatei ist älter als cachedatei
- * 4. Falls notwendig: cache generieren - Die teure aktion!
- * 5. Gecachten inhalt ausgeben
- *
- *
- * */
 
 
 
