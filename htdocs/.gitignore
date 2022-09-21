@@ -1,0 +1,11 @@
+#deprecated code
+info.php
+sqltest.php
+test.php
+articles.json
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen

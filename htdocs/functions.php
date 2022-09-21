@@ -1,14 +1,6 @@
 <?php
-//get articles from db
-function getData(){
-    $file=file_get_contents('articles.json');
-    return json_decode($file, TRUE);
-}
-//write information to db
-function writeData($articles){
-    $update=json_encode($articles);
-    file_put_contents('articles.json', $update);
-}
+//get articles from dbz
+
 
 //takes in an array and sorts the element in descending order
 function sortDesc($articles){
@@ -93,12 +85,10 @@ function getNumberOfPages($conn,$no_of_articles){
 
 //get Entries from database
 function getEntries($conn, $offset, $no_of_articles){
-    //settype changes the variable which can cause problems in some cases (i.e. when using references of variables. You could use (int)$var or (string)$var instead. They don't make changes to the actual variable
-    /*settype($offset, int);//convert offset to type int
-    settype($no_of_articles, int);//convert offset to type int*/
+
     //%d is placeholder for decimals(integers), %s for string. If var is a string it will return 0. You can also change the order in which arguments are taken in i.e. LIMIT %2$d,%1$d and which would be $no_of_articles, $offset
     $normalesquery = "SELECT * FROM blog ORDER BY date DESC LIMIT %d, %d";
-    //$select = "SELECT * FROM blog ORDER BY date DESC LIMIT $offset, $no_of_articles"; // prepare und bind anschauen, zumindest sicherstellen das wir hier integer reinkloppen
+
     $select = sprintf($normalesquery, $offset, $no_of_articles);//sprintf returns a formatted string, while printf is like echo  // prepare und bind anschauen, zumindest sicherstellen das wir hier integer reinkloppen
     $articles = $conn->query($select);
     return $articles;
@@ -106,9 +96,7 @@ function getEntries($conn, $offset, $no_of_articles){
 
 //insert new entry into database
 function insertEntries($conn, $title, $description, $image, $text){
-    /*  $insert = "INSERT INTO blog(title, description, image, text) VALUES('{$title}', '{$description}', '{$image}', '{$text}')"; // prepare und bind anschauen
-    $conn->query($insert);*/
-    //$insert = "INSERT INTO blog(title, description, image, text) VALUES(:title, :description, :image, :text)";//PDO style
+
     $insert = "INSERT INTO blog(title, description, image, text) VALUES(?, ?, ?, ?)";
     $stmt = $conn->prepare($insert);// prepare SQL statement
     $stmt->bind_param("ssss", $title, $description, $image, $text);//bind parameters   //s for strings and i for integers
@@ -117,10 +105,7 @@ function insertEntries($conn, $title, $description, $image, $text){
 
 //get article to edit from database
 function getArticle($conn, $item){
-    /*$edit = "SELECT * FROM blog WHERE id = '{$item}'"; //SQL statement - prepare/bind anschauen, zumindest sicherstellen das int
-    $article = $conn->query($edit);//send query to database
-    $elem = $article->fetch_assoc();//fetch result of query and store in variable
-    return $elem;*/
+
     $stmt = $conn->prepare("SELECT * FROM blog WHERE id=?");// prepare SQL statement
     $stmt->bind_param("i", $item);//bind parameters and makes sure it's of the specified type
     $stmt->execute();//connect to database and execute query
