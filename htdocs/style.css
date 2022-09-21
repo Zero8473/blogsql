@@ -1,0 +1,172 @@
+@font-face {
+    font-family: 'Bangers';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Bangers Regular'), local('Bangers-Regular'), url(https://fonts.gstatic.com/s/bangers/v13/FeVQS0BTqb0h60ACH55Q2A.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Sansita Swashed';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/sansitaswashed/v1/BXR8vFfZifTZgFlDDLgNkBydPKTt3pVCeYWqJnZSW7RpXT0few.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body{
+    font-family: Bangers,'sans-serif';
+    overflow:scroll;
+    background-color: cornflowerblue;
+    text-align: left;
+    color: white;
+    margin: auto auto;
+    padding:20px;
+}
+/*styling for My Blog section*/
+.header{
+    text-align: center;
+    padding: 30px;
+    font-size: 25px;
+    background-color: grey;
+    /*
+    margin: 20px auto;
+    */
+}
+/*buttons*/
+/*new post button*/
+.new-Post{ /*new post section*/
+    text-align: center;
+    padding:10px;
+}
+.new-Post-button, .cancel-button{
+    text-align: center;
+    color:green;
+    text-decoration: none;
+    background-color: silver;
+    padding:5px;
+    border:1px solid black;
+    border-radius: 5px;
+}
+.new-Post-button:hover, .cancel-button:hover{
+    color:cyan;
+}
+/*change*/
+.delete{
+    display: inline;
+}
+/*box model for new posts (textarea)*/
+.new{
+    text-align: center;
+}
+/*textfield for new posts*/
+.new #textfield{
+    font-family: Bangers, 'sans-serif';
+    border:solid;
+    background-color: #d2691e;
+    background-image: url("https://i2.wp.com/otakujournalist.com/wp-content/uploads/2014/01/anime-girl-headphones-writing.jpg?resize=680%2C459");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+/*submit button for new posts*/
+#submit{
+    font-family: Bangers, 'sans-serif';
+}
+/*left column of the blog*/
+.left{
+    float:left;
+    width:70%;
+    min-width: 600px;
+ }
+
+/*right column of the blog*/
+.right{
+    display:inline-block;
+    float:left;
+    width:25%;
+    margin-left: 5px;
+    /*
+    padding-left:5px;
+    */
+}
+
+/*styling for all cards(all sections)*/
+.card{
+    padding:20px;
+    background-color: #ff0000;
+    margin-top: 20px;
+    border-color: white;
+    border: solid 2px;
+
+}
+/* additional styling specifically for articles*/
+.entry{
+}
+/*the title of each article*/
+.title{
+    color: #ffffff;
+    text-decoration: none;
+}
+.title:hover{
+    color: black;
+}
+/*article image*/
+.image{
+    background-color: #808080;
+    max-width: 500px;
+    max-height: 300px;
+    /*padding:20px;*/
+    border:solid;
+    border-color:black;
+    border-radius: 5px;
+}
+
+.upload:hover{
+    color:blue;
+}
+
+/*clears float after main*/
+.main:after{
+    content: "";
+    display: table;
+    clear:both;
+}
+.footer{
+    text-align: center;
+    padding:10px;
+    background-color: #ffffff;
+    margin-top:10px;
+
+}
+/*element that groups all pages*/
+.pagination{
+    border: solid 2px;
+    padding: 20px;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+}
+/*individual pages*/
+.page{
+    color:grey;
+    background-color: silver;
+    padding: 5px;
+    text-decoration: none;
+    border:solid 1px #000000;
+    border-radius: 5px;
+}
+/*highlights current page*/
+.current{
+    color: black;
+}
+
+.page:hover{
+    color:cyan;
+}
+
+/*Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other*/
+@media screen and (max-width: 800px) {
+    .left, .right {
+        width: 100%;
+        padding: 0;
+    }
+}
